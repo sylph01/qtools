@@ -1,0 +1,48 @@
+<%= form_for(@round) do |f| %>
+  <% if @round.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@round.errors.count, "error") %> prohibited this round from being saved:</h2>
+
+      <ul>
+      <% @round.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <span class="label">大会名</span><br />
+		<% if @event %>
+      <%= f.hidden_field :event_id, :value => @event.id %><%= @event.name %>
+    <% else %>
+		  <%= f.select :event_id, Event.all.collect{|x| [x.name, x.id]} %>
+		<% end%>
+  </div>
+  <div class="field">
+    <span class="label">ラウンド名</span><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <span class="label">メモ</span><br />
+    <%= f.text_area :description, cols: 40, rows: 7 %>
+  </div>
+  <% if @round.new_record? %>
+    <div class="field">
+	    <span class="label">プレイヤー一覧（改行区切り）</span><br />
+			<%= text_area_tag :names, "", cols: 16, rows: 24 %>
+	  </div>
+		<div class="field">
+	    <span class="label">自動抽選を行う</span><br />
+			<%= check_box_tag :sort, 1 %>
+	  </div>
+		<div class="field">
+	    <span class="label">コート数</span><br />
+			<%= select_tag :courts, options_for_select([1,2,3,4,5,6]) %>
+	  </div>
+  <% end %>
+  <div class="actions">
+		<%= hidden_field_tag :event_id, params[:event_id] %>
+    <%= f.submit "送信" %>
+  </div>
+<% end %>

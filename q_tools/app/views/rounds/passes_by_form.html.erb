@@ -1,0 +1,19 @@
+<h2>
+  <%= @round.event.name %> / <%= @round.name%> / 通過者
+</h2>
+
+
+<h3><%= params[:top] %>抜け/惜敗<%= params[:rate]%></h3>
+<p>
+<textarea cols=16 rows=16><%= @round.select_topX_and_rateY(params[:top].to_i, params[:rate].to_i).join("\n") %></textarea>
+</p>
+
+<h3>全惜敗順</h3>
+<p>
+<textarea cols=25 rows=16><%= @round.rate_order.join("\n") %></textarea>
+</p>
+
+
+
+<%= link_to '新規ラウンド作成', new_round_path(params: {event_id: @round.event.id}) %> | 
+<%= link_to '戻る', @round %>

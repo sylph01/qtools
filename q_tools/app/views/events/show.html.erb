@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= @event.name %>
+</h2>
+
+<h3>ラウンド一覧</h3>
+<table class="list-table">
+  <tr>
+    <th class="w200">ラウンド名</th>
+    <th colspan="3">(機能)</th>
+  </tr>
+
+<% @event.rounds.each do |round| %>
+  <tr>
+    <td><%= link_to round.name, round %></td>
+    <td><%= link_to '編集', edit_round_path(round) %></td>
+	<td><%= link_to '表示用組み合わせ一覧', list_round_path(round) %></td>
+    <td><%= link_to '削除', round, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+  </tr>
+<% end %>
+</table>
+<p>
+	<%= link_to 'ラウンド作成', new_round_path(params: {event_id: @event.id}) %>
+</p>
+
+<h4>メモ</h4>
+<p>
+  <%= @event.description %>
+</p>
+
+
+<%= link_to '編集', edit_event_path(@event) %> |
+<%= link_to '戻る', events_path %>

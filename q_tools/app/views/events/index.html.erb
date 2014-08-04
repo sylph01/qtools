@@ -1,0 +1,23 @@
+<h2>大会一覧</h2>
+
+<table class="list-table">
+  <tr>
+    <th class="w300">大会名</th>
+	<th>アクティブ</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= link_to event.name, event %></td>
+	<td><%= event.active == true ? "○" : "×" %></td>
+    <td><%= link_to '編集', edit_event_path(event) %></td>
+    <td><%= link_to '削除', event, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新規大会', new_event_path %>

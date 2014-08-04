@@ -1,0 +1,5 @@
+<h1>ラウンド/新規作成</h1>
+
+<%= render 'form' %>
+
+<%= link_to '戻る', @round.event || (params[:event_id] ? event_path(id: params[:event_id]) : rounds_path ) %>

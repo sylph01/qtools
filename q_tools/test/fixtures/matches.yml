@@ -1,0 +1,59 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  round_id: 1
+  match_number: 1
+  player1_name: MyString
+  player1_genre: MyString
+  player1_type: MyString
+  player1_free_1: MyString
+  player1_free_2: MyString
+  player1_free_3: MyString
+  player2_name: MyString
+  player2_genre: MyString
+  player2_type: MyString
+  player2_free_1: MyString
+  player2_free_2: MyString
+  player2_free_3: MyString
+  player3_name: MyString
+  player3_genre: MyString
+  player3_type: MyString
+  player3_free_1: MyString
+  player3_free_2: MyString
+  player3_free_3: MyString
+  player4_name: MyString
+  player4_genre: MyString
+  player4_type: MyString
+  player4_free_1: MyString
+  player4_free_2: MyString
+  player4_free_3: MyString
+  notes: MyText
+
+two:
+  round_id: 1
+  match_number: 1
+  player1_name: MyString
+  player1_genre: MyString
+  player1_type: MyString
+  player1_free_1: MyString
+  player1_free_2: MyString
+  player1_free_3: MyString
+  player2_name: MyString
+  player2_genre: MyString
+  player2_type: MyString
+  player2_free_1: MyString
+  player2_free_2: MyString
+  player2_free_3: MyString
+  player3_name: MyString
+  player3_genre: MyString
+  player3_type: MyString
+  player3_free_1: MyString
+  player3_free_2: MyString
+  player3_free_3: MyString
+  player4_name: MyString
+  player4_genre: MyString
+  player4_type: MyString
+  player4_free_1: MyString
+  player4_free_2: MyString
+  player4_free_3: MyString
+  notes: MyText

@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= @event.name %> / 出題履歴
+</h2>
+
+<h3><%= params[:player] %> の出題</h3>
+<table class="list-table">
+  <tr>
+    <th>ラウンド</th>
+	<th>ジャンル</th>
+	<th>形式</th>
+  </tr>
+  <% @history.each do |hist| %>
+  <tr>
+    <td><%= hist[0] %></td>
+	<td><%= hist[1] %></td>
+	<td><%= hist[2] %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to '戻る', event_path(@event) %>(ラウンド一覧ページへ戻ります)

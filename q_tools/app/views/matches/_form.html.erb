@@ -1,0 +1,127 @@
+<%= form_for(@match) do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <span class="label">ラウンド名</span><br />
+		<% if @round %>
+		  <%= f.hidden_field :round_id, :value => @round.id %><%= @round.event.name %> / <%= @round.name%>
+		<% else %>
+      <%= f.select :round_id, Round.all.collect{|x| [(x.event && x.event.name + "/") + x.name, x.id]} %>
+		<% end%>
+  </div>
+	<div class="field">
+    <span class="label">コート</span><br />
+    <%= f.select :court, court_select %>
+  </div>
+  <div class="field">
+    <span class="label">試合番号</span><br />
+	<%= f.text_field :match_number, size: 6 %>(新規作成時空白で自動補完)
+  </div>
+
+	<% if @match.new_record? %>
+	<div class="field">
+	    <span class="label">プレイヤー1</span><br />
+	    <%= f.text_field :player1_name %>
+	</div>
+	<div class="field">
+	    <span class="label">プレイヤー2</span><br />
+	    <%= f.text_field :player2_name %>
+	</div>
+		<div class="field">
+	    <span class="label">プレイヤー3</span><br />
+	    <%= f.text_field :player3_name %>
+	</div>
+	<div class="field">
+	    <span class="label">プレイヤー4</span><br />
+	    <%= f.text_field :player4_name %>
+	</div>
+	<% else %>
+	  <table border=1 cellpadding=2 cellspacing=0>
+			<!-- player -->
+			<tr>
+				<th>CN</th>
+				<th>ジャンル</th>
+				<th>形式</th>
+				<th>総得点</th>
+			</tr>
+			<!-- player -->
+			<tr>
+				<td>
+					<%= f.text_field :player1_name %>
+				</td>
+				<td>
+					<%= f.select :player1_genre, genre_select, :include_blank => true %>
+				</td>
+				<td>
+					<%= f.select :player1_type, type_select, :include_blank => true %><span id="player1_freeselect"><br />
+					<%= f.select :player1_free_1, type_select, :include_blank => true %>, <%= f.select :player1_free_2, type_select, :include_blank => true %>, <%= f.select :player1_free_3, type_select, :include_blank => true %></span>
+				</td>
+				<td><%= f.text_field :player1_score, size: 10 %></td>
+			</tr>
+			<!-- player -->
+			<tr>
+				<td>
+					<%= f.text_field :player2_name %>
+				</td>
+				<td>
+					<%= f.select :player2_genre, genre_select, :include_blank => true %>
+				</td>
+				<td>
+					<%= f.select :player2_type, type_select, :include_blank => true %><span id="player2_freeselect"><br />
+					<%= f.select :player2_free_1, type_select, :include_blank => true %>, <%= f.select :player2_free_2, type_select, :include_blank => true %>, <%= f.select :player2_free_3, type_select, :include_blank => true %></span>
+				</td>
+				<td><%= f.text_field :player2_score, size: 10 %></td>
+			</tr>
+			<!-- player -->
+			<tr>
+				<td>
+					<%= f.text_field :player3_name %>
+				</td>
+				<td>
+					<%= f.select :player3_genre, genre_select, :include_blank => true %>
+				</td>
+				<td>
+					<%= f.select :player3_type, type_select, :include_blank => true %><span id="player3_freeselect"><br />
+					<%= f.select :player3_free_1, type_select, :include_blank => true %>, <%= f.select :player3_free_2, type_select, :include_blank => true %>, <%= f.select :player3_free_3, type_select, :include_blank => true %></span>
+				</td>
+				<td><%= f.text_field :player3_score, size: 10 %></td>
+			</tr>
+			<!-- player -->
+			<tr>
+				<td>
+					<%= f.text_field :player4_name %>
+				</td>
+				<td>
+					<%= f.select :player4_genre, genre_select, :include_blank => true %>
+				</td>
+				<td>
+					<%= f.select :player4_type, type_select, :include_blank => true %><span id="player4_freeselect"><br />
+					<%= f.select :player4_free_1, type_select, :include_blank => true %>, <%= f.select :player4_free_2, type_select, :include_blank => true %>, <%= f.select :player4_free_3, type_select, :include_blank => true %></span>
+				</td>
+				<td><%= f.text_field :player4_score, size: 10 %></td>
+			</tr>
+		</table>
+		
+		<div class="field">
+			<span class="label">結果画像</span><br />
+			<%= f.file_field :image %>
+		<div>
+	<% end %>
+  <div class="field">
+    <span class="label">備考</span><br />
+    <%= f.text_area :notes, cols: 40, rows: 7 %>
+  </div>
+  <div class="actions">
+    <%= f.submit "送信" %>
+  </div>
+<% end %>

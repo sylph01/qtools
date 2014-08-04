@@ -1,0 +1,40 @@
+<h1>試合一覧</h1>
+
+<table class="list-table">
+  <tr>
+    <% unless @round %><th>ラウンド</th><% end %>
+    <th>コート/試合</th>
+    <th>プレイヤー1</th>
+    <th>プレイヤー2</th>
+    <th>プレイヤー3</th>
+    <th>プレイヤー4</th>
+	<th>得点</th>
+	<th>画像</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @matches.each do |match| %>
+  <tr>
+    <% unless @round %><td><%= match.round && match.round.name %></td><% end %>
+    <td><%= match.name %></td>
+    <td><%= match.player1_name %></td>
+    <td><%= match.player2_name %></td>
+    <td><%= match.player3_name %></td>
+    <td><%= match.player4_name %></td>
+	<td><%= match.scores_set? ? "○" : "×" %></td>
+	<td><%= match.image? ? "○" : "×" %></td>
+    <td><%= link_to '詳細', match %></td>
+    <td><%= link_to '編集', edit_match_path(match) %></td>
+    <td><%= link_to '削除', match, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新規試合', new_match_path(params: {round_id: params[:round_id]}) %> 
+<% if @round %>
+  / <%= link_to "ラウンド一覧へ戻る", round_path(id: params[:round_id]) %>
+<% end%>

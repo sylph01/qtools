@@ -1,0 +1,30 @@
+<%= form_for(@match_image) do |f| %>
+  <% if @match_image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match_image.errors.count, "error") %> prohibited this match_image from being saved:</h2>
+
+      <ul>
+      <% @match_image.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :match_id %><br />
+		<% if @match %>
+		<%= @match.name %><%= f.hidden_field :match_id, :value => @match.id %>
+		<% else %>
+    <%= f.select :match_id, Match.all.map{ |m| ["#{m.round.event.name}/#{m.round.name}/#{m.name}", m.id]} %>
+		<% end %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+	<hr />
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

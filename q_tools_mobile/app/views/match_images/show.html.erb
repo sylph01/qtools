@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>試合：</b>
+  <%= "#{@match_image.match.round.name} / #{@match_image.match.name}" %>
+</p>
+
+<p>
+  <b>画像</b><br />
+	<% if @match_image.image? %>
+    <%= image_tag @match_image.image_url, width: 480, height: 360, id: "match_image" if @match_image.image? %><br />
+	<% end %>
+</p>
+
+<%= link_to @match_image.match do %><span class="button">戻る</span><% end%>

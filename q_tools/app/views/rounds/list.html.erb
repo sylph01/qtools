@@ -1,0 +1,27 @@
+<h1>
+ <%= @round.name %> 組み合わせ
+</h1>
+
+<% i = 0%>
+<table cellpadding="10">
+<% @round.matches.each do |match| %>
+	<% if i % 4 == 0 %>
+		<tr>
+	<% end %>
+	<td>
+		<h2><%= match.court %>コート 第<%= match.match_number %>試合</h2>
+		<p class="large">
+		<%= match.player1_name %><br />
+		<%= match.player2_name %><br />
+		<%= match.player3_name %><br />
+		<%= match.player4_name %>
+	</td>
+	<% if i % 4 == 3 %>
+	  </tr>
+	<% end %>
+	<% i += 1 %>
+</p>
+<% end %>
+</table>
+
+<%= link_to '戻る', @round.event %>

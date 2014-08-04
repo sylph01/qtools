@@ -1,0 +1,9 @@
+<h1>大会一覧</h1>
+
+<% @events.each do |event| %>
+<h2><%= event.name %></h2>
+<p><%= link_to event do %><span class="button">移動</span><% end %></p>
+<p>
+<%= event.description %>
+</p>
+<% end %>

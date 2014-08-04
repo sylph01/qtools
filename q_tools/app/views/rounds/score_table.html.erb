@@ -1,0 +1,65 @@
+<h2>
+  <%= @round.event.name %> / <%= @round.name%> / 全結果
+</h2>
+
+<h3>テーブル形式出力</h3>
+<table border=1 cellspacing=0 cellpadding=3>
+	<tr>
+		<th>コート</th>
+		<th>試合</th>
+		<th>CN</th>
+		<th>ジャンル</th>
+		<th>形式</th>
+		<th>総得点</th>
+		<th>順位</th>
+	</tr>
+	<% @round.matches.each do |match| %>
+	<!-- player 1 -->
+	<tr>
+		<td><%= match.court %></td>
+		<td><%= match.match_number %></td>
+		<td><%= match.player1_name %></td>
+		<td><%= match.player1_genre %></td>
+		<td><%= match.player1_type %></td>
+		<td><%= match.player1_score %></td>
+		<td><%= match.player1_rank %></td>
+	</tr>
+	<!-- player 2 -->
+	<tr>
+		<td><%= match.court %></td>
+		<td><%= match.match_number %></td>
+		<td><%= match.player2_name %></td>
+		<td><%= match.player2_genre %></td>
+		<td><%= match.player2_type %></td>
+		<td><%= match.player2_score %></td>
+		<td><%= match.player2_rank %></td>
+	</tr>
+	<!-- player 3 -->
+	<tr>
+		<td><%= match.court %></td>
+		<td><%= match.match_number %></td>
+		<td><%= match.player3_name %></td>
+		<td><%= match.player3_genre %></td>
+		<td><%= match.player3_type %></td>
+		<td><%= match.player3_score %></td>
+		<td><%= match.player3_rank %></td>
+	</tr>
+	<!-- player 4 -->
+	<tr>
+		<td><%= match.court %></td>
+		<td><%= match.match_number %></td>
+		<td><%= match.player4_name %></td>
+		<td><%= match.player4_genre %></td>
+		<td><%= match.player4_type %></td>
+		<td><%= match.player4_score %></td>
+		<td><%= match.player4_rank %></td>
+	</tr>
+	<% end%>
+</table>
+
+<h3>Qacers形式出力</h3>
+<textarea cols="50" rows="16"><%= @round.qacers_export %></textarea>
+
+<p>
+<%= link_to '戻る', @round %>
+</p>

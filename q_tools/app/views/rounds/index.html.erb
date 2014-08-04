@@ -1,0 +1,24 @@
+<h1><% if @event %>"<%= @event.name %>"の<% end %>ラウンド一覧</h1>
+
+<table class="list-table">
+  <tr>
+    <% unless @event %><th>大会</th><% end %>
+    <th class="w200">ラウンド名</th>
+    <th colspan="3">(機能)</th>
+  </tr>
+
+<% @rounds.each do |round| %>
+  <tr>
+    <% unless @event %><td><%= round.event && round.event.name %></td><% end %>
+    <td><%= link_to round.name, round %></td>
+    <td><%= link_to '編集', edit_round_path(round) %></td>
+	<td><%= link_to '表示用組み合わせ一覧', list_round_path(round) %></td>
+    <td><%= link_to '削除', round, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '新規ラウンド', new_round_path(params: {event_id: params[:event_id]}) %> / 
+<%= link_to '大会一覧へ', events_path %>

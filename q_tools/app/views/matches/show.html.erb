@@ -1,0 +1,107 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @match.round && @match.round.event && @match.round.event.name %> / <%= @match.round && @match.round.name %> <%= @match.court %>コート <%= @match.match_number %>試合</h2>
+<table border=1 cellpadding=2 cellspacing=0>
+	<!-- player -->
+	<tr>
+		<th>CN</th>
+		<th>ジャンル</th>
+		<th>形式</th>
+		<th>総得点</th>
+		<th>順位</th>
+		<th>惜敗率</th>
+	</tr>
+	<!-- player -->
+	<tr>
+		<td>
+			<%= @match.player1_name %>
+		</td>
+		<td>
+			<%= @match.player1_genre %>
+		</td>
+		<td>
+			<%= @match.player1_type %>
+			<% if @match.player1_type == "自由" %>
+				(<%= @match.player1_free_1 %>,<%= @match.player1_free_2 %>,<%= @match.player1_free_3 %>)
+			<% end %>
+		</td>
+		<td><%= @match.player1_score %></td>
+		<td><%= @match.player1_rank %></td>
+		<td><%= @match.player1_rate && ("%3.2f" % @match.player1_rate) %></td>
+	</tr>
+	<!-- player -->
+	<tr>
+		<td>
+			<%= @match.player2_name %>
+		</td>
+		<td>
+			<%= @match.player2_genre %>
+		</td>
+		<td>
+			<%= @match.player2_type %>
+			<% if @match.player2_type == "自由" %>
+				(<%= @match.player2_free_1 %>,<%= @match.player2_free_2 %>,<%= @match.player2_free_3 %>)
+			<% end %>
+		</td>
+		<td><%= @match.player2_score %></td>
+		<td><%= @match.player2_rank %></td>
+		<td><%= @match.player2_rate && ("%3.2f" % @match.player2_rate) %></td>
+	</tr>
+	<!-- player -->
+	<tr>
+		<td>
+			<%= @match.player3_name %>
+		</td>
+		<td>
+			<%= @match.player3_genre %>
+		</td>
+		<td>
+			<%= @match.player3_type %>
+			<% if @match.player3_type == "自由" %>
+				(<%= @match.player3_free_1 %>,<%= @match.player3_free_2 %>,<%= @match.player3_free_3 %>)
+			<% end %>
+		</td>
+		<td><%= @match.player3_score %></td>
+		<td><%= @match.player3_rank %></td>
+		<td><%= @match.player3_rate && ("%3.2f" % @match.player3_rate) %></td>
+	</tr>
+	<!-- player -->
+	<tr>
+		<td>
+			<%= @match.player4_name %>
+		</td>
+		<td>
+			<%= @match.player4_genre %>
+		</td>
+		<td>
+			<%= @match.player4_type %>
+			<% if @match.player4_type == "自由" %>
+				(<%= @match.player4_free_1 %>,<%= @match.player4_free_2 %>,<%= @match.player4_free_3 %>)
+			<% end %>
+		</td>
+		<td><%= @match.player4_score %></td>
+		<td><%= @match.player4_rank %></td>
+		<td><%= @match.player4_rate && ("%3.2f" % @match.player4_rate) %></td>
+	</tr>
+</table>
+
+<p>
+  <b>結果画像:</b><br />
+	<% if @match.image? %>
+    <%= image_tag @match.image_url, width: 480, height: 360, id: "match_image" if @match.image? %><br />
+		<%= link_to "画像回転", {}, onclick: "rotateImage(true);return false;", id: "image_rotate_link" %>
+	<% end %>
+	
+	<% @match.match_images.each do |mi| %>
+		<li><%= link_to "画像", mi%></li>
+	<% end %>
+</p>
+
+<p>
+  <b>備考:</b>
+  <%= @match.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_match_path(@match) %> |
+<%= link_to 'Back', @match.round %>

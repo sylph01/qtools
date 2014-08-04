@@ -1,0 +1,25 @@
+<h1><%= @round.event.name %> / <%= @round.name %></h1>
+
+<h2>試合一覧</h2>
+<ul class="button-list">
+<% @round.matches.order("court, match_number ASC").each do |match| %>
+<li>
+	<p>
+	<%= match.court %>コート<%= match.match_number %>試合
+	<% if match.names_set? %>
+	<br /><%= match.player1_name %>, <%= match.player2_name %>, <%= match.player3_name %>, <%= match.player4_name %>
+	<% end %>
+	</p>
+	<p>
+		<%= link_to match do %><span class="button">表示</span><% end %>
+	</p>
+	<p>
+		<%= link_to history_match_path(match) do %><span class="button">出題履歴</span><%end%>
+	</p>
+</li>
+<% end %>
+</ul>
+<hr />
+<p>
+<%= link_to @round.event do %><span class="button">ラウンド一覧に戻る</span><% end %>
+</p>

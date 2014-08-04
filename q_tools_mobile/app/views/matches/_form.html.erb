@@ -1,0 +1,75 @@
+<%= form_for(@match, :url => { :action => :confirm }) do |f| %>
+<h3>
+	試合情報
+</h3>
+<p class="field">
+	<span class="label">試合名</span> 
+	<% if @round %>
+	  <%= f.hidden_field :round_id, :value => @round.id %><%= @round.event.name %> / <%= @round.name%>
+	<% else %>
+      <%= f.select :round_id, Round.all.collect{|x| [(x.event && x.event.name + "/") + x.name, x.id]} %>
+	<% end%>
+</p>
+<p class="field">
+  <span class="label">コート</span> <%= f.select :court, court_select %>
+</p>
+<p class="field">
+  <span class="label">プレイヤー1</span> <%= f.text_field :player1_name, size: 20 %><br />
+  <span class="label">プレイヤー2</span> <%= f.text_field :player2_name, size: 20 %><br />
+  <span class="label">プレイヤー3</span> <%= f.text_field :player3_name, size: 20 %><br />
+  <span class="label">プレイヤー4</span> <%= f.text_field :player4_name, size: 20 %><br />
+</p>
+<hr />
+<h3>出題: <%= @match.player1_name || "プレイヤー1" %></h3>
+<p class="field">
+	ジャンル: <%= f.select :player1_genre, genre_select, :include_blank => true %> 形式: <%= f.select :player1_type, type_select, :include_blank => true %><br />
+	<br />
+	<span id="player1_freeselect">
+	自由形式: <%= f.select :player1_free_1, type_select, :include_blank => true %>, <%= f.select :player1_free_2, type_select, :include_blank => true %>, <%= f.select :player1_free_3, type_select, :include_blank => true %>
+	</span>
+</p>
+<h3>出題: <%= @match.player2_name || "プレイヤー2" %></h3>
+<p class="field">
+	ジャンル: <%= f.select :player2_genre, genre_select, :include_blank => true %> 形式: <%= f.select :player2_type, type_select, :include_blank => true %><br />
+	<br />
+	<span id="player2_freeselect">
+	自由形式: <%= f.select :player2_free_1, type_select, :include_blank => true %>, <%= f.select :player2_free_2, type_select, :include_blank => true %>, <%= f.select :player2_free_3, type_select, :include_blank => true %>
+	</span>
+</p>
+<h3>出題: <%= @match.player3_name || "プレイヤー3" %></h3>
+<p class="field">
+	ジャンル: <%= f.select :player3_genre, genre_select, :include_blank => true %> 形式: <%= f.select :player3_type, type_select, :include_blank => true %><br />
+	<br />
+	<span id="player3_freeselect">
+	自由形式: <%= f.select :player3_free_1, type_select, :include_blank => true %>, <%= f.select :player3_free_2, type_select, :include_blank => true %>, <%= f.select :player3_free_3, type_select, :include_blank => true %>
+	</span>
+</p>
+<h3>出題: <%= @match.player4_name || "プレイヤー4" %></h3>
+<p class="field">
+	ジャンル: <%= f.select :player4_genre, genre_select, :include_blank => true %> 形式: <%= f.select :player4_type, type_select, :include_blank => true %><br />
+	<br />
+	<span id="player4_freeselect">
+	自由形式: <%= f.select :player4_free_1, type_select, :include_blank => true %>, <%= f.select :player4_free_2, type_select, :include_blank => true %>, <%= f.select :player4_free_3, type_select, :include_blank => true %>
+	</span>
+</p>
+<hr />
+<h3>
+総得点
+</h3>
+<table>
+	<tr><td><%= @match.player1_name || "プレイヤー1" %></td><td><%= f.text_field :player1_score, size: 12 %></td></tr>
+	<tr><td><%= @match.player2_name || "プレイヤー2" %></td><td><%= f.text_field :player2_score, size: 12 %></td></tr>
+	<tr><td><%= @match.player3_name || "プレイヤー3" %></td><td><%= f.text_field :player3_score, size: 12 %></td></tr>
+	<tr><td><%= @match.player4_name || "プレイヤー4" %></td><td><%= f.text_field :player4_score, size: 12 %></td></tr>
+</table>
+<h3>
+結果画像
+</h3>
+<p class="field">
+<%= f.file_field :image, :html => {:accept => "image/*", :capture => "camera"} %>
+</p>
+<hr />
+<p class="field">
+	<%= f.submit "送信" %>
+</p>
+<% end %>

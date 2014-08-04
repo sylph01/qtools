@@ -1,0 +1,33 @@
+<h1><%= @match.round.event.name %> / <%= @match.round.name %> / <%= @match.name %> / 出題履歴</h1>
+
+<h3>1: <%= @match.player1_name%></h3>
+<ul>
+	<% @match.round.event.history_by_name(@match.player1_name).each do |history| %>
+	<li><%= history[0] %> : <%= history[1]%> / <%= history[2] %></li>
+	<% end %>
+</ul>
+
+<h3>2: <%= @match.player2_name%></h3>
+<ul>
+	<% @match.round.event.history_by_name(@match.player2_name).each do |history| %>
+	<li><%= history[0] %> : <%= history[1]%> / <%= history[2] %></li>
+	<% end %>
+</ul>
+
+<h3>3: <%= @match.player3_name%></h3>
+<ul>
+	<% @match.round.event.history_by_name(@match.player3_name).each do |history| %>
+	<li><%= history[0] %> : <%= history[1]%> / <%= history[2] %></li>
+	<% end %>
+</ul>
+
+<h3>4: <%= @match.player4_name%></h3>
+<ul>
+	<% @match.round.event.history_by_name(@match.player4_name).each do |history| %>
+	<li><%= history[0] %> : <%= history[1]%> / <%= history[2] %></li>
+	<% end %>
+</ul>
+<hr />
+<p>
+	<%= link_to @match.round do %><span class="button">戻る</span><% end %>
+</p>

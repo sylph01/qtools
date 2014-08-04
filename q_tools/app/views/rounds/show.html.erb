@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  <%= @round.event.name %> / <%= @round.name %>
+</h2>
+
+<h3>試合一覧</h3>
+
+<table class="list-table">
+  <tr>
+    <th>コート/試合</th>
+    <th>プレイヤー1</th>
+    <th>プレイヤー2</th>
+    <th>プレイヤー3</th>
+    <th>プレイヤー4</th>
+	<th>得点</th>
+	<th>画像</th>
+    <th colspan="3">(機能)</th>
+  </tr>
+
+<% @round.matches.order("match_number ASC").each do |match| %>
+  <tr>
+    <td><%= link_to match.name, match %></td>
+    <td><%= link_to match.player1_name, history_event_path(@round.event, :player => match.player1_name) %></td>
+    <td><%= link_to match.player2_name, history_event_path(@round.event, :player => match.player2_name) %></td>
+    <td><%= link_to match.player3_name, history_event_path(@round.event, :player => match.player3_name) %></td>
+    <td><%= link_to match.player4_name, history_event_path(@round.event, :player => match.player4_name) %></td>
+	  <td><%= match.scores_set? ? "○" : "×" %></td>
+	  <td><%= (match.image? || match.match_images.length > 0) ? "○" : "×" %></td>
+		<td><%= link_to '画像追加', match_image_from_match_path(match) %></td>
+    <td><%= link_to '編集', edit_match_path(match) %></td>
+    <td><%= link_to '削除', match, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '新規試合', new_match_path(params: {round_id: @round.id}) %>
+
+<h4>メモ</h4>
+<p>
+  <%= @round.description %>
+</p>
+
+<p>
+	<%= link_to "通過者", passes_round_path(@round) %> (得点の入力後に確認のこと)<br />
+	<%= link_to "全結果", score_table_round_path(@round) %>
+</p>
+<p>
+	<%= form_tag url_for(:controller => :rounds, :action => :passes_by_form) do %>
+	<%= text_field_tag :top, "", :size => 5 %> 抜け / 惜敗 <%= text_field_tag :rate, "", :size => 5%>
+	<%= hidden_field_tag :id, @round.id %>
+	<%= submit_tag "通過者一覧作成"%>
+	<% end %>
+</p>
+
+<%= link_to '編集', edit_round_path(@round) %> |
+<%= link_to '戻る', @round.event %>

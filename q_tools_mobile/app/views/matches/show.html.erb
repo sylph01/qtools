@@ -1,0 +1,94 @@
+<h1><%= @match.round.event.name %> / <%= @match.round.name %> / <%= @match.name %></h1>
+<% if notice %>
+<p><%= notice %></p>
+<% end %>
+<h3>1: <%= @match.player1_name%></h3>
+<table>
+	<tr>
+		<td>出題</td><td><%= @match.player1_genre %> / <%= @match.player1_type %></td>
+	</tr>
+	<% if @match.player1_type == "自由" %>
+		<tr><td>自由形式</td><td><%= @match.player1_free_1 %> <%= @match.player1_free_2 %> <%= @match.player1_free_3 %></td></tr>
+	<% end %>
+	<tr>
+		<td>得点</td><td><%= @match.player1_score %></td>
+	</tr>
+	<tr>
+		<td>順位</td><td><%= @match.player1_rank %></td>
+	</tr>
+	<tr>
+		<td>惜敗率</td><td><%= @match.player1_rate && ("%3.2f" % @match.player1_rate) %></td>
+	</tr>
+</table>
+
+<h3>2: <%= @match.player2_name%></h3>
+<table>
+	<tr>
+		<td>出題</td><td><%= @match.player2_genre %> / <%= @match.player2_type %></td>
+	</tr>
+	<% if @match.player2_type == "自由" %>
+		<tr><td>自由形式</td><td><%= @match.player2_free_1 %> <%= @match.player2_free_2 %> <%= @match.player2_free_3 %></td></tr>
+	<% end %>
+	<tr>
+		<td>得点</td><td><%= @match.player2_score %></td>
+	</tr>
+	<tr>
+		<td>順位</td><td><%= @match.player2_rank %></td>
+	</tr>
+	<tr>
+		<td>惜敗率</td><td><%= @match.player2_rate && ("%3.2f" % @match.player2_rate) %></td>
+	</tr>
+</table>
+
+<h3>3: <%= @match.player3_name%></h3>
+<table>
+	<tr>
+		<td>出題</td><td><%= @match.player3_genre %> / <%= @match.player3_type %></td>
+	</tr>
+	<% if @match.player3_type == "自由" %>
+		<tr><td>自由形式</td><td><%= @match.player3_free_1 %> <%= @match.player3_free_2 %> <%= @match.player3_free_3 %></td></tr>
+	<% end %>
+	<tr>
+		<td>得点</td><td><%= @match.player3_score %></td>
+	</tr>
+	<tr>
+		<td>順位</td><td><%= @match.player3_rank %></td>
+	</tr>
+	<tr>
+		<td>惜敗率</td><td><%= @match.player3_rate && ("%3.2f" % @match.player3_rate) %></td>
+	</tr>
+</table>
+
+<h3>4: <%= @match.player4_name%></h3>
+<table>
+	<tr>
+		<td>出題</td><td><%= @match.player4_genre %> / <%= @match.player4_type %></td>
+	</tr>
+	<% if @match.player4_type == "自由" %>
+		<tr><td>自由形式</td><td><%= @match.player4_free_1 %> <%= @match.player4_free_2 %> <%= @match.player4_free_3 %></td></tr>
+	<% end %>
+	<tr>
+		<td>得点</td><td><%= @match.player4_score %></td>
+	</tr>
+	<tr>
+		<td>順位</td><td><%= @match.player4_rank %></td>
+	</tr>
+	<tr>
+		<td>惜敗率</td><td><%= @match.player4_rate && ("%3.2f" % @match.player4_rate) %></td>
+	</tr>
+</table>
+
+<h3>
+	結果画像
+</h3>
+<p>
+  <%= image_tag @match.image_url, width: 240, height: 180 if @match.image? %>
+</p>
+
+<% @match.match_images.each do |mi| %>
+	<li><%= link_to "画像", mi%></li>
+<% end %>
+<hr />
+<p>
+	<%= link_to @match.round do %><span class="button">戻る</span><% end %>
+</p>

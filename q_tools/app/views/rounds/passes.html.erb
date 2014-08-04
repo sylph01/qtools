@@ -1,0 +1,53 @@
+<h2>
+  <%= @round.event.name %> / <%= @round.name%> / 通過者
+</h2>
+
+<h3>通常</h3>
+
+<h4>1抜け</h4>
+<p>
+<textarea cols=16 rows=16><%= @round.select_top1.join("\n") %></textarea>
+</p>
+
+<h4>2抜け</h4>
+<p>
+<textarea cols=16 rows=16><%= @round.select_top2.join("\n") %></textarea>
+</p>
+
+<hr />
+
+<h3>惜敗通過</h3>
+
+<h3>1抜け/惜敗1</h3>
+<p>
+<textarea cols=16 rows=16><%= @round.select_top1_and_rate(1).join("\n") %></textarea>
+</p>
+
+<h3>1抜け/惜敗6</h3>
+<p>
+<textarea cols=16 rows=16><%= @round.select_top1_and_rate(6).join("\n") %></textarea>
+</p>
+
+<h3>全惜敗順</h3>
+<p>
+<textarea cols=25 rows=16><%= @round.rate_order.join("\n") %></textarea>
+</p>
+
+<hr />
+
+<h4>
+	敗者復活
+</h4>
+
+<h3>3位以下</h3>
+<p>
+<textarea cols=16 rows=16><%= @round.select_bottom2.join("\n") %></textarea>
+</p>
+
+<h3>2位のみ</h3>
+<p>
+<textarea cols=16 rows=16><%= @round.select_2nd.join("\n") %></textarea>
+</p>
+
+<%= link_to '新規ラウンド作成', new_round_path(params: {event_id: @round.event.id}) %> | 
+<%= link_to '戻る', @round %>

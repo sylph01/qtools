@@ -1,0 +1,63 @@
+<%= form_for(@match, :multipart => true) do |f| %>
+<h3>
+	試合情報
+</h3>
+<p class="field">
+	<span class="label">試合名</span>
+	<!-- should have round -->
+	<% if @round %>
+	  <%= f.hidden_field :round_id, :value => @match.round_id %><%= @round.event.name %> / <%= @round.name%>
+	<% else %>
+	<% end%>
+</p>
+<p class="field">
+  <span class="label">コート</span><%= @match.court %><%= f.hidden_field :court, :value => @match.court %>
+</p>
+<p class="field">
+  <span class="label">プレイヤー1</span> <%= @match.player1_name %><%= f.hidden_field :player1_name, :value => @match.player1_name %><br />
+  <span class="label">プレイヤー2</span> <%= @match.player2_name %><%= f.hidden_field :player2_name, :value => @match.player2_name %><br />
+  <span class="label">プレイヤー3</span> <%= @match.player3_name %><%= f.hidden_field :player3_name, :value => @match.player3_name %><br />
+  <span class="label">プレイヤー4</span> <%= @match.player4_name %><%= f.hidden_field :player4_name, :value => @match.player4_name %><br />
+</p>
+<hr />
+<h3>出題: <%= @match.player1_name || "プレイヤー1" %></h3>
+<p class="field">
+	ジャンル: <%= @match.player1_genre %><%= f.hidden_field :player1_genre, :value => @match.player1_genre %> 形式: <%= @match.player1_type %><%= f.hidden_field :player1_type, :value => @match.player1_type %><br />
+	<br />
+	自由形式: <%= @match.player1_free_1 %><%= f.hidden_field :player1_free_1, :value => @match.player1_free_1 %>, <%= @match.player1_free_2 %><%= f.hidden_field :player1_free_2, :value => @match.player1_free_2 %>, <%= @match.player1_free_3 %><%= f.hidden_field :player1_free_3, :value => @match.player1_free_3 %>
+</p>
+<h3>出題: <%= @match.player2_name || "プレイヤー2" %></h3>
+<p class="field">
+	ジャンル: <%= @match.player2_genre %><%= f.hidden_field :player2_genre, :value => @match.player2_genre %> 形式: <%= @match.player2_type %><%= f.hidden_field :player2_type, :value => @match.player2_type %><br />
+	<br />
+	自由形式: <%= @match.player2_free_1 %><%= f.hidden_field :player2_free_1, :value => @match.player2_free_1 %>, <%= @match.player2_free_2 %><%= f.hidden_field :player2_free_2, :value => @match.player2_free_2 %>, <%= @match.player2_free_3 %><%= f.hidden_field :player2_free_3, :value => @match.player2_free_3 %>
+</p>
+<h3>出題: <%= @match.player3_name || "プレイヤー3" %></h3>
+<p class="field">
+	ジャンル: <%= @match.player3_genre %><%= f.hidden_field :player3_genre, :value => @match.player3_genre %> 形式: <%= @match.player3_type %><%= f.hidden_field :player3_type, :value => @match.player3_type %><br />
+	<br />
+	自由形式: <%= @match.player3_free_1 %><%= f.hidden_field :player3_free_1, :value => @match.player3_free_1 %>, <%= @match.player3_free_2 %><%= f.hidden_field :player3_free_2, :value => @match.player3_free_2 %>, <%= @match.player3_free_3 %><%= f.hidden_field :player3_free_3, :value => @match.player3_free_3 %>
+</p>
+<h3>出題: <%= @match.player4_name || "プレイヤー4" %></h3>
+<p class="field">
+	 ジャンル: <%= @match.player4_genre %><%= f.hidden_field :player4_genre, :value => @match.player4_genre %> 形式: <%= @match.player4_type %><%= f.hidden_field :player4_type, :value => @match.player4_type %><br />
+	<br />
+	自由形式: <%= @match.player4_free_1 %><%= f.hidden_field :player4_free_1, :value => @match.player4_free_1 %>, <%= @match.player4_free_2 %><%= f.hidden_field :player4_free_2, :value => @match.player4_free_2 %>, <%= @match.player4_free_3 %><%= f.hidden_field :player4_free_3, :value => @match.player4_free_3 %>
+</p>
+<hr />
+<h3>
+総得点
+</h3>
+<table>
+	<tr><td><%= @match.player1_name || "プレイヤー1" %></td><td><%= @match.player1_score %><%= f.hidden_field :player1_score, :value => @match.player1_score %></td></tr>
+	<tr><td><%= @match.player2_name || "プレイヤー2" %></td><td><%= @match.player2_score %><%= f.hidden_field :player2_score, :value => @match.player2_score %></td></tr>
+	<tr><td><%= @match.player3_name || "プレイヤー3" %></td><td><%= @match.player3_score %><%= f.hidden_field :player3_score, :value => @match.player3_score %></td></tr>
+	<tr><td><%= @match.player4_name || "プレイヤー4" %></td><td><%= @match.player4_score %><%= f.hidden_field :player4_score, :value => @match.player4_score %></td></tr>
+</table>
+<!-- image -->
+<hr />
+<p class="field">
+	以上の内容で問題がない場合は以下を選択してください：<br />
+	<%= f.submit "送信" %>
+</p>
+<% end %>

@@ -1,0 +1,15 @@
+<h1>大会一覧</h1>
+
+<% @events.each do |event| %>
+<h2><%= event.name %></h2>
+<p><%= link_to event do %><span class="button">移動</span><% end %></p>
+<p>
+<%= event.description %>
+</p>
+<% end %>
+<hr />
+<h3>QTools Mobile</h3>
+<p>
+<a href="http://qadmin.s01.info/">QTools</a>のスマートフォン向けインターフェース。もちろんパソコンからでも操作可能。<br />
+こちらは集計入力をサテ側の集計人/ジャッジがスマートフォンで行うということを想定して作成したので、持つ機能は「大会一覧」「ラウンド一覧」「試合一覧」「試合情報編集」のみ。<br />
+</p>

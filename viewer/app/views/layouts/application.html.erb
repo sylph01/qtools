@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+  <title>QToolsMobile</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, scale=1, maximum-scale=1">
+	<meta name="format-detection" content="telephone=no">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+	<%= yield %>
+
+	<!-- navigation -->
+	<hr />
+	<h3>
+		リンク
+	</h3>
+	<ul class="nav">
+		<%= link_to root_path do%>
+		<li>
+			ホーム画面
+		</li>
+		<% end %>
+	</ul>
+	<div class="clearfix"></div>
+	
+</div>
+</body>
+</html>

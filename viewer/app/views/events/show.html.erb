@@ -1,0 +1,13 @@
+<h1><%= @event.name %></h1>
+
+<h2>
+	ラウンド一覧
+</h2>
+
+<ul class="button-list">
+<% @event.rounds.each do |round| %>
+<li>
+	<%= round.name %><%= link_to round do %><span class="button">表示</span><% end %>
+</li>
+<% end %>
+</ul>

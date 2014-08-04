@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QTools</title>
+  <%= stylesheet_link_tag    "default_layout", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+	<div class="header">
+		<h1>QTools: 大会進行管理ツール</h1>
+	</div>
+	<div class="side">
+		<h2>機能</h2>
+		<ul>
+			<li><%= link_to "大会一覧", events_path %></li>
+			<li><%= link_to "トップ", root_path %></li>
+		</ul>
+	</div>
+	<div class="main">
+		<%= yield %>
+	</div>
+</div>
+
+
+</body>
+</html>
