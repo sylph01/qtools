@@ -2,6 +2,8 @@
 
 (see below for Japanese description)
 
+(changelogs before initial release is in private repository)
+
 ## What is QTools
 
 QTools is a toolkit for managing [Quiz Magic Academy](http://www.konami.jp/am/qma/) arcade tournaments. QTools provides an input interface for smartphones, and an administration console for computers. 
