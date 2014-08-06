@@ -4,10 +4,10 @@ $(document).ready(function(){
 	$("#player3_freeselect").hide();
 	$("#player4_freeselect").hide();
 	
-	$("#match_player1_type").change(changeType);
-	$("#match_player2_type").change(changeType);
-	$("#match_player3_type").change(changeType);
-	$("#match_player4_type").change(changeType);
+	$("#match_player1_type").change(changeType).trigger("change");
+	$("#match_player2_type").change(changeType).trigger("change");
+	$("#match_player3_type").change(changeType).trigger("change");
+	$("#match_player4_type").change(changeType).trigger("change");
 });
 
 function changeType() {
