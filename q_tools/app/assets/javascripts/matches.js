@@ -47,16 +47,18 @@ $(document).ready(function(){
 
 function rotateImage(isRotated){
 	if(isRotated){
-		$("img#match_image").css("-moz-transform","rotateZ(180deg)");
-		$("img#match_image").css("-webkit-transform","rotateZ(180deg)");
-		$("img#match_image").css("-o-transform","rotateZ(180deg)");
-		$("img#match_image").css("-ms-transform","rotateZ(180deg)");
-		$("a#image_rotate_link").attr("onclick","rotateImage(false);return false;");
+		$("#match_image")
+			.css("-moz-transform","rotateZ(180deg)")
+			.css("-webkit-transform","rotateZ(180deg)")
+			.css("-o-transform","rotateZ(180deg)")
+			.css("-ms-transform","rotateZ(180deg)");
+		$("#image_rotate_link").attr("onclick","rotateImage(false);return false;");
 	} else {
-		$("img#match_image").css("-moz-transform","");
-		$("img#match_image").css("-webkit-transform","");
-		$("img#match_image").css("-o-transform","");
-		$("img#match_image").css("-ms-transform","");
-		$("a#image_rotate_link").attr("onclick","rotateImage(true);return false;");
+		$("#match_image")
+			.css("-moz-transform","")
+			.css("-webkit-transform","")
+			.css("-o-transform","")
+			.css("-ms-transform","");
+		$("#image_rotate_link").attr("onclick","rotateImage(true);return false;");
 	}
 }
