@@ -47,18 +47,20 @@ $(document).ready(function(){
 
 function rotateImage(isRotated){
 	if(isRotated){
-		$("#match_image")
-			.css("-moz-transform","rotateZ(180deg)")
-			.css("-webkit-transform","rotateZ(180deg)")
-			.css("-o-transform","rotateZ(180deg)")
-			.css("-ms-transform","rotateZ(180deg)");
+		$("#match_image").css({
+			"-moz-transform": "rotateZ(180deg)",
+			"-webkit-transform": "rotateZ(180deg)",
+			"-o-transform": "rotateZ(180deg)",
+			"-ms-transform": "rotateZ(180deg)"
+		});
 		$("#image_rotate_link").attr("onclick","rotateImage(false);return false;");
 	} else {
-		$("#match_image")
-			.css("-moz-transform","")
-			.css("-webkit-transform","")
-			.css("-o-transform","")
-			.css("-ms-transform","");
+		$("#match_image").css({
+			"-moz-transform": "",
+			"-webkit-transform": "",
+			"-o-transform": "",
+			"-ms-transform": ""
+		});
 		$("#image_rotate_link").attr("onclick","rotateImage(true);return false;");
 	}
 }
