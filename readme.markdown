@@ -1,5 +1,11 @@
 # QTools
 
+# Important Notice: I am not developing QTools anymore. Use [Qtoolf](https://github.com/sylph01/qtoolf) instead. All running instances of QTools that are under my administration will be shut down soon.
+
+# 重要なお知らせ： QToolsは開発を終了しました。[Qtoolf](https://github.com/sylph01/qtoolf)を代わりに使ってください。sylph01の管理下にある動作しているQToolsのサイトは近く停止する予定です。
+
+----
+
 (see below for Japanese description)
 
 (changelogs before initial release is in private repository)
@@ -10,9 +16,7 @@ QTools is a toolkit for managing [Quiz Magic Academy](http://www.konami.jp/am/qm
 
 ## Active Instances
 
-* Test Instance (requires basic authentication; for now, contact sylph01 for privileges)
-    * [Admin](http://qadmin.s01.ninja/)
-    * [Mobile](http://qtools.s01.ninja/)
+No active instances under my control, as the development of QTools has ended.
 
 ## Functions
 
@@ -42,9 +46,7 @@ QTools is a toolkit for managing [Quiz Magic Academy](http://www.konami.jp/am/qm
 
 ## 動作実例
 
-* テスト環境（実データを含むためBasic認証をかけています。現在のところはsylph01にコンタクトを取ってください）
-    * [Admin](http://qadmin.s01.ninja/)
-    * [Mobile](http://qtools.s01.ninja/)
+開発停止、Qtoolfへの移行のため停止しました。
 
 ## 主な機能
 
